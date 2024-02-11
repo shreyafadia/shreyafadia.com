@@ -1,9 +1,8 @@
-+++
-title = 'Main'
-date = 2024-02-11T00:08:18-05:00
-+++
-## Introduction
+---
+title: Main
+date: 2024-02-11T05:08:18.000Z
+description: My first post
+---
+# Hello, world!
 
-This is **bold** text, and this is *emphasized* text.
-
-Visit the [Hugo](https://gohugo.io) website!
+Hi there, everyone :)
