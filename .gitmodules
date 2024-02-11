@@ -1,0 +1,3 @@
+[submodule "gruvhugo-theme-fork"]
+	path = gruvhugo-theme-fork
+	url = git@gitlab.com:codesections/gruvhugo-theme-fork.git
