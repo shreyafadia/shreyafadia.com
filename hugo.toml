@@ -14,7 +14,13 @@ theme = 'gruvhugo'
     name       = "Posts"
     url        = "post/"
 
-  [[menu.main]]
-    identifier = "wiki"
-    name       = "Wiki"
-    url        = "none"
+  # [[menu.main]]
+  #   identifier = "wiki"
+  #   name       = "Wiki"
+  #   url        = "none"
+[params.main]
+  enabled = true
+  img = "images/avatar.png"
+  img_title = "Author's Avatar"
+  quote = "This is an example quote."
+  description = "<strong>Welcome!</strong> Here is the description for the home page."

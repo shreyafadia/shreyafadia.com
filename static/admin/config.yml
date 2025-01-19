@@ -1,8 +1,17 @@
 backend:
-  name: git-gateway
-  branch: main # Branch to update (optional; defaults to master)
+  name: proxy
+  proxy_url: http://localhost:8085/api/v1
+  branch: master # optional, defaults to master
+# backend:
+#   name: git-gateway
+#   local_backend: true
+#   branch: main # Branch to update (optional; defaults to master)
+local_backend:
+  # when using a custom proxy server port
+  url: http://localhost:8085/api/v1
 media_folder: static/img
 public_folder: /img
+
 collections:
   - name: 'blog'
     label: 'Blog'
@@ -16,3 +25,15 @@ collections:
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'pages'
+    label: 'Pages'
+    files: 
+    - name: 'about'
+      label: 'About the author'
+      file: 'content/about.md'
+      create: true
+      editor:
+        preview: false
+      fields:
+        - { label: 'T', name: 't', widget: 'string' }
+        - { label: 'Body', name: 'body', widget: 'markdown' }
