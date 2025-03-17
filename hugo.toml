@@ -1,26 +1,5 @@
 baseURL = 'https://shreyafadia.netlify.com'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Shreya Fadia'
 theme = 'gruvhugo'
 
-[menu]
-  [[menu.main]]
-    identifier = "about"
-    name       = "About"
-    url        = "about"
-
-  [[menu.main]]
-    identifier = "posts"
-    name       = "Posts"
-    url        = "post/"
-
-  # [[menu.main]]
-  #   identifier = "wiki"
-  #   name       = "Wiki"
-  #   url        = "none"
-[params.main]
-  enabled = true
-  img = "images/avatar.png"
-  img_title = "Author's Avatar"
-  quote = "This is an example quote."
-  description = "<strong>Welcome!</strong> Here is the description for the home page."

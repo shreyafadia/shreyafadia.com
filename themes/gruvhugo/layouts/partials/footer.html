@@ -1,4 +1,7 @@
 <footer id="footer">
+
+    {{ partial "menu.html" . }}
+
     <strong>{{- with .Site.Params.social }}</strong>
     <div class="social">
         {{ partial "social.html" . }}

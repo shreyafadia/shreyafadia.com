@@ -209,7 +209,7 @@ p, li {
 }
 
 .image {
-    width: 200px;
+    width: 320px;
     border-radius: 200px;
     margin: 10px;
 }
@@ -233,22 +233,23 @@ blockquote {
 .nav {
     margin: 20px auto;
     a {
-        background: $primary-accent-color;
-        background: linear-gradient(90deg, $primary-accent-color 0%, $secondary-accent-color 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$primary-accent-color",endColorstr="#0a8fa8",GradientType=1);
-        padding: 10px;
-        color: $light-color;
+      //  background: $primary-accent-color;
+      //  background: linear-gradient(90deg, $primary-accent-color 0%, $secondary-accent-color 100%);
+      //  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$primary-accent-color",endColorstr="#0a8fa8",GradientType=1);
+        padding: 8px;
+      //  color: $light-color;
+        color: $link-color;
         text-decoration: none;
-        border-radius: 3px;
+        border-radius: 5px;
         margin: 5px;
     }
     a:hover {
-        background: #fff;
-        padding: 8px;
-        color: $primary-accent-color;
-        text-decoration: none;
-        border: 2px solid $primary-accent-color;
-        animation : blueToWhite 0.4s linear;
+        //background: #fff;
+        padding: 6px;
+       // color: $primary-accent-color;
+        text-decoration: $link-color;
+        border: 2px solid $link-color;
+        //animation : blueToWhite 0.4s linear;
     }
 }
 

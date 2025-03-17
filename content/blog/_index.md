@@ -2,7 +2,7 @@
 title: Blog posts
 menus:
   main:
-    name: "Blog"
+    name: Blog
 post: false
 draft: true
 weight: 130

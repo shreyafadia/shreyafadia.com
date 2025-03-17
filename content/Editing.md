@@ -1,7 +1,7 @@
 ---
-title: Editing
 menu: main
+title: Editing
 draft: true
 weight: 100
 ---
-TODO
+Currently hidden
