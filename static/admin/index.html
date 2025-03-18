@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Manager</title>
-    <!-- Include the script that enables Netlify Identity on this page. -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS | Shreya Fadia</title>
+
+    <!-- Netlify Identity widgit-->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
-    <!--
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  -->
-  <script src="../js/decap-cms_3.0.0.js"></script>
-  </body>
+
+    <script>
+      // Reload once someone has logged in
+      if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", function (user) {
+              if (!user) {
+                  window.netlifyIdentity.on("login", function () {
+                      document.location.reload();
+                  });
+              }
+          });
+      }
+    </script>
+
+</head>
+
+<body>
+    <script src="../js/decap-cms_3.0.0.js"></script>
+</body>
+
 </html>
