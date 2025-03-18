@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "decap-cms": "^3.5.0",
+    "decap-cms-app": "^3.5.0"
+  }
+}

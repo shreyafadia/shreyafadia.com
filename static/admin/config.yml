@@ -13,44 +13,25 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'blog-config'
-    label: 'Blog configuration options'
-    folder: 'content/blog'
-    filter: {field: "post", value: false}
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    editor:
-      preview: false
-    fields:
-      - { label: 'Post',  name: 'post', widget: 'hidden', default: false }
-      - { label: 'Title for blog list page', name: 'title', widget: 'string' }
-      - { label: 'Hidden', name: 'draft', widget: 'boolean', default: true }
-  - name: 'blog'
-    label: 'Blog posts'
-    folder: 'content/blog'
-    filter: {field: "post", value: true}
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    editor:
-      preview: false
-    fields:
-      - { label: 'Post',  name: 'post', widget: 'hidden', default: true }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
-      - { label: 'Hidden', name: 'draft', widget: 'boolean', default: true}
   - name: 'pages'
     label: 'Pages'
     files: 
+    - label: "Site configuration "
+      name: "site-config"
+      file: "data/site.yml"
+      editor:
+        preview: false
+      fields:
+        - {label: "Main Image", name: "img", widget: "image", required: false }
+        - {label: "Image Title", name: "img_title", widget: "string", required: false}
     - name: 'about'
-      label: 'About'
+      label: 'About (& homepage)'
       file: 'content/about.md'
       create: true
       fields:
         - { label: 'Menu',  name: 'menu', widget: 'hidden', default: "main" }
         - { label: 'Title', name: 'title', widget: 'string' }
-        - { label: 'Body', name: 'body', widget: 'markdown' }
+        - { label: 'Body', name: 'body', widget: 'markdown', hint: "Also shown as homepage content" }
         - { label: 'Hidden', name: 'draft', widget: 'boolean', default: false}
     - name: 'editing'
       label: 'Editing'

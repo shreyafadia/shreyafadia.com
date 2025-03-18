@@ -1,4 +1,4 @@
-baseURL = 'https://shreyafadia.netlify.com'
+baseURL = 'https://shreyafadia.com'
 languageCode = 'en-us'
 title = 'Shreya Fadia'
 theme = 'gruvhugo'

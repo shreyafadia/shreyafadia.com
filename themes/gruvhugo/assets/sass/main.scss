@@ -1,6 +1,7 @@
 /* Styling */
 
 @import 'variables';
+//@import 'generated';
 
 html{
     font-family:'Times New Roman', 'Times', 'Noto Serif', serif;
@@ -405,6 +406,11 @@ code {
 ul li p {
     margin: 5px;
 }
+
+ul li {
+    margin-top: .1em;
+}
+
 
 @keyframes blueToWhite {
     0% {
