@@ -1,5 +1,49 @@
 baseURL = 'https://shreyafadia.com'
 languageCode = 'en-us'
-title = 'Shreya Fadia'
+title = 'Shreya Fadia'
 theme = 'gruvhugo'
+paginate = 10  # optional: posts per page
 
+[params.main]
+  enabled      = true
+  headerTitle  = 'Shreya Fadia'          # used in the site header
+  name         = 'Shreya Fadia'          # used in meta author tag
+  lang         = 'en'                    # used for <html lang="">
+  description  = 'Shreya Fadia is a writer and editor based in North Carolina…'  # meta description for home page
+  keywords     = 'Shreya Fadia, fiction, editor, writer'   # keywords for home page
+  metaKeywords = 'author, fiction, editor'  # remove duplicates by using only one keywords tag
+  img          = 'img/saf-photo.jpg'     # path in /static for og:image
+  img_title    = 'portrait of shreya fadia' # alt/tooltip for photo
+# add if we create a favicon
+# icon         = 'img/favicon.svg'         # site favicon
+  copyright    = '© 2025 shreya fadia.  all rights reserved.'
+  enablekatex  = false  # unless you need math rendering
+
+# Add if Shreya creates socials
+# [[params.social]]
+#   name = 'linkedin'
+#   url  = 'https://linkedin.com/in/shreya-fadia'
+
+# [[params.social]]
+#   name = 'github'
+#   url  = 'https://github.com/shreyafadia'
+
+# main navigation – order is controlled by weight
+[menu]
+  [[menu.main]]
+    identifier = 'about'
+    name       = 'about'
+    url        = '/about/'
+    weight     = 10
+
+  [[menu.main]]
+    identifier = 'publications'
+    name       = 'publications'
+    url        = '/publications/'
+    weight     = 20
+
+  [[menu.main]]
+    identifier = 'contact'
+    name       = 'contact'
+    url        = '/contact/'
+    weight     = 30
