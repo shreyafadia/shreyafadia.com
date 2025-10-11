@@ -1,6 +1,8 @@
 ---
 title: About
 menus: main
+description: "Biography of Shreya Fadia, writer and editor"
+keywords: ["Shreya Fadia", "fiction writer", "editor"]
 draft: false
 weight: 10
 ---
