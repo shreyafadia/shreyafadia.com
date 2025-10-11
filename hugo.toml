@@ -13,10 +13,10 @@ paginate = 10  # optional: posts per page
   keywords     = 'Shreya Fadia, fiction, editor, writer'   # keywords for home page
   metaKeywords = 'author, fiction, editor'  # remove duplicates by using only one keywords tag
   img          = 'img/saf-photo.jpg'     # path in /static for og:image
-  img_title    = 'portrait of shreya fadia' # alt/tooltip for photo
+  img_title    = 'portrait of Shreya Fadia' # alt/tooltip for photo
 # add if we create a favicon
 # icon         = 'img/favicon.svg'         # site favicon
-  copyright    = '© 2025 shreya fadia.  all rights reserved.'
+  copyright    = '© 2025 Shreya Fadia. All rights reserved.'
   enableKatex  = false  # unless we need math rendering
 
 # Add if Shreya creates socials
