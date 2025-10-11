@@ -32,18 +32,18 @@ paginate = 10  # optional: posts per page
 [menu]
   [[menu.main]]
     identifier = 'about'
-    name       = 'about'
+    name       = 'About'
     url        = '/about/'
     weight     = 10
 
   [[menu.main]]
     identifier = 'publications'
-    name       = 'publications'
+    name       = 'Publications'
     url        = '/publications/'
     weight     = 20
 
   [[menu.main]]
     identifier = 'contact'
-    name       = 'contact'
+    name       = 'Contact'
     url        = '/contact/'
     weight     = 30
