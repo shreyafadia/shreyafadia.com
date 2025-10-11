@@ -17,7 +17,7 @@ paginate = 10  # optional: posts per page
 # add if we create a favicon
 # icon         = 'img/favicon.svg'         # site favicon
   copyright    = '© 2025 shreya fadia.  all rights reserved.'
-  enablekatex  = false  # unless you need math rendering
+  enableKatex  = false  # unless we need math rendering
 
 # Add if Shreya creates socials
 # [[params.social]]
