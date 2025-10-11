@@ -2,6 +2,8 @@
 title: Publications
 menu: main
 draft: false
+description: "Selected publications by Shreya Fadia"
+keywords: ["Shreya Fadia", "fiction", "publications"]
 weight: 50
 ---
 * Samsara, *Fourteen Hills* 31 (2025)
