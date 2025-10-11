@@ -27,23 +27,3 @@ paginate = 10  # optional: posts per page
 # [[params.social]]
 #   name = 'github'
 #   url  = 'https://github.com/shreyafadia'
-
-# main navigation – order is controlled by weight
-[menu]
-  [[menu.main]]
-    identifier = 'about'
-    name       = 'About'
-    url        = '/about/'
-    weight     = 10
-
-  [[menu.main]]
-    identifier = 'publications'
-    name       = 'Publications'
-    url        = '/publications/'
-    weight     = 20
-
-  [[menu.main]]
-    identifier = 'contact'
-    name       = 'Contact'
-    url        = '/contact/'
-    weight     = 30
