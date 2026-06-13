@@ -2,7 +2,8 @@ baseURL = 'https://shreyafadia.com'
 languageCode = 'en-us'
 title = 'Shreya Fadia'
 theme = 'gruvhugo'
-paginate = 10  # optional: posts per page
+[pagination]
+  pagerSize = 10  # posts per page
 
 [params.main]
   enabled      = true
