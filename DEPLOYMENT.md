@@ -90,7 +90,24 @@ The nginx vhost has three relevant routes inside the `https` server block:
    - `git pull --ff-only` in `/home/main/shreyafadia.com`;
    - `git submodule update --init --recursive` (no-op today — see "Known cruft");
    - `hugo -s . -d public`;
-   - logs everything to `/var/log/webhook.log` and returns `200`.
+   - logs everything to `/var/log/webhook.log`; returns **`200` on success**, or
+     **`500` if `git pull` or `hugo` fails** — so a broken deploy shows up as a
+     failed delivery in GitHub (Settings → Webhooks → Recent Deliveries) instead
+     of silently rebuilding stale content.
+
+### Ownership (important)
+
+The checkout, its `.git/`, and `public/` must be owned by **`www-data`** — that's
+the user the deploy hook runs as (via `fcgiwrap`). **Never run `git` or `hugo`
+against this checkout as `root` or `main`.** Doing so leaves `root`-owned objects
+in `.git/objects`, after which the webhook's `git pull` fails with
+`insufficient permission for adding an object` and deploys quietly rebuild
+**stale** content. If you must run something manually, use `sudo -u www-data …`.
+To repair ownership after a slip:
+
+```sh
+sudo chown -R www-data:www-data /home/main/shreyafadia.com
+```
 
 ### GitHub webhook settings (repo → Settings → Webhooks)
 
@@ -134,8 +151,9 @@ login does not depend on Netlify's hosted OAuth.
 
 | Task | How |
 | --- | --- |
-| Force a rebuild | Re-deliver the latest delivery in GitHub → Settings → Webhooks → Recent Deliveries; or on the host run `sudo -u www-data hugo -s /home/main/shreyafadia.com -d /home/main/shreyafadia.com/public` |
+| Force a rebuild | Re-deliver the latest delivery in GitHub → Settings → Webhooks → Recent Deliveries; or on the host run `sudo -u www-data hugo -s /home/main/shreyafadia.com -d /home/main/shreyafadia.com/public` (note `sudo -u www-data`) |
 | Watch a deploy | `ssh main.hetzner.deb 'tail -f /var/log/webhook.log'` |
+| A deploy ran but the site didn't change | Check the delivery status in GitHub (a failed deploy returns **500**) and `/var/log/webhook.log`. Most common cause is `.git` ownership drift — see [Ownership](#ownership-important); repair with `sudo chown -R www-data:www-data /home/main/shreyafadia.com` |
 | Restart the OAuth broker | `ssh main.hetzner.deb 'sudo systemctl restart cms-oauth'` (status: `systemctl status cms-oauth`) |
 | Renew TLS | Automatic (certbot timer). Manual: `sudo certbot renew` |
 | Rotate the webhook secret | Update `SECRET=` in the build-hook script **and** the secret in the GitHub webhook |
