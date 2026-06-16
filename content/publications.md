@@ -9,7 +9,7 @@ keywords:
   - publications
 weight: 50
 ---
-* Samsara, *Fourteen Hills* 31 (2025).
+* Samsara, *Fourteen Hills* 31 (2025)
 * In Fertile Ground, *Booth* 20 (2025) (reprint)
 * [Forbidden Fruit](https://phoebejournal.com/forbidden-fruit/), *Phoebe* 54.1 (2025)
 * [Thank You for Sharing](https://losangelesreview.org/thank-you-for-sharing-by-shreya-fadia/), [](losangelesreview.org/thank-you-for-sharing-by-shreya-fadia/)*The Los Angeles Review* (2024)[](https://losangelesreview.org/thank-you-for-sharing-by-shreya-fadia/)
