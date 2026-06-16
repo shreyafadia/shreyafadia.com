@@ -4,6 +4,8 @@ backend:
   branch: main # defaults to master
   auth_scope: repo
   squash_merges: true
+  base_url: https://shreyafadia.com
+  auth_endpoint: auth
 local_backend: false
 
 # backend:
