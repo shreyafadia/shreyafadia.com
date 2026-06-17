@@ -1,7 +1,7 @@
 ---
 title: Contact
 weight: 80
-draft: true
+draft: false
 menu: main
 description: Contact info of Shreya Fadia, writer and editor
 keywords:
