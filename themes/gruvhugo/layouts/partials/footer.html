@@ -2,9 +2,10 @@
 
     {{ partial "menu.html" . }}
 
-    <strong>{{- with .Site.Params.social }}</strong>
+    {{- with (or .Site.Data.site.social .Site.Params.social) }}
     <div class="social">
         {{ partial "social.html" . }}
-    </div><strong>{{- end }}</strong>
-    <p style="color:grey;">{{ .Site.Params.main.copyright | safeHTML }}</p>
+    </div>
+    {{- end }}
+    <p style="color:grey;">{{ .Site.Data.site.copyright | default .Site.Params.main.copyright | safeHTML }}</p>
 </footer>

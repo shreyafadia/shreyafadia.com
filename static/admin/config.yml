@@ -6,61 +6,80 @@ backend:
   squash_merges: true
   base_url: https://shreyafadia.com
   auth_endpoint: auth
-local_backend: false
 
-# backend:
-#   name: proxy
-#   proxy_url: http://localhost:8081/api/v1
-#   branch: master # defaults to master
-# local_backend:
-#   url: http://localhost:8081/api/v1 # when using a custom proxy server port
+local_backend: false
+publish_mode: editorial_workflow
 
 media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'pages'
-    label: 'Pages'
-    files: 
-    - label: "Site configuration "
-      name: "site-config"
-      file: "data/site.yml"
-      editor:
-        preview: false
-      fields:
-        - {label: "Main Image", name: "img", widget: "image", required: false }
-        - {label: "Image Title", name: "img_title", widget: "string", required: false}
-    - name: 'about'
-      label: 'About (& homepage)'
-      file: 'content/about.md'
-      create: true
-      fields:
-        - { label: 'Menu',  name: 'menu', widget: 'hidden', default: "main" }
-        - { label: 'Title', name: 'title', widget: 'string' }
-        - { label: 'Body', name: 'body', widget: 'markdown', hint: "Also shown as homepage content" }
-        - { label: 'Hidden', name: 'draft', widget: 'boolean', default: false}
-    - name: 'editing'
-      label: 'Editing'
-      file: 'content/Editing.md'
-      create: true
-      fields:
-        - { label: 'Menu',  name: 'menu', widget: 'hidden', default: "main" }
-        - { label: 'Title', name: 'title', widget: 'string' }
-        - { label: 'Body', name: 'body', widget: 'markdown' }
-        - { label: 'Hidden', name: 'draft', widget: 'boolean', default: true }
-    - name: 'publications'
-      label: 'Publications'
-      file: 'content/publications.md'
-      create: true
-      fields:
-        - { label: 'Title', name: 'title', widget: 'string' }
-        - { label: 'Body', name: 'body', widget: 'markdown' }
-        - { label: 'Hidden',  name: 'draft', widget: 'boolean', default: false }
-    - name: 'contact'
-      label: 'Contact'
-      file: 'content/contact.md'
-      create: true
-      fields:
-        - { label: 'Title', name: 'title', widget: 'string' }
-        - { label: 'Body', name: 'body', widget: 'markdown' }
-        - { label: 'Hidden',  name: 'draft', widget: 'boolean', default: false }
+  # ---------- SITE SETTINGS (edits data/site.yml) ----------
+  - name: settings
+    label: Site Settings
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: site
+        label: General & Social
+        file: data/site.yml
+        fields:
+          - { label: "Site title (header & browser tab)", name: title, widget: string, required: false }
+          - { label: "Homepage SEO description", name: description, widget: text, required: false,
+              hint: "One or two sentences used as the homepage meta description and social-share preview. Not shown on the page itself." }
+          - { label: "Profile photo", name: img, widget: image, required: false }
+          - { label: "Profile photo caption / alt text", name: img_title, widget: string, required: false }
+          - { label: "Show profile photo on the homepage", name: show_portrait, widget: boolean, default: true }
+          - { label: "Footer / copyright text", name: copyright, widget: string, required: false,
+              hint: "Shown at the bottom of every page. Basic HTML is allowed." }
+          - label: "Social links"
+            name: social
+            widget: list
+            required: false
+            label_singular: "Social link"
+            summary: '{{fields.name}} → {{fields.url}}'
+            hint: "Each link becomes an icon in the footer. Pick the network so the matching icon is used."
+            fields:
+              - label: "Network"
+                name: name
+                widget: select
+                options:
+                  - email
+                  - instagram
+                  - twitter
+                  - facebook
+                  - linkedin
+                  - github
+                  - gitlab
+                  - mastodon
+                  - goodreads
+                  - medium
+                  - reddit
+                  - youtube
+              - { label: "URL (use mailto: for email)", name: url, widget: string }
+          - { label: "Body font (advanced)", name: font, widget: string, required: false }
+
+  # ---------- SECTIONS (one entry per page in content/) ----------
+  - name: sections
+    label: Sections
+    label_singular: Section
+    folder: content
+    create: true
+    delete: false # protects all pages, including the About/homepage source
+    extension: md
+    format: yaml-frontmatter
+    editor:
+      preview: false
+    sortable_fields: ['weight', 'title']
+    summary: '{{fields.title}} — {{fields.draft | ternary("Hidden","Visible")}}'
+    fields:
+      - { label: "Title (also the navigation label)", name: title, widget: string }
+      - { label: "Menu order (lower numbers appear first)", name: weight, widget: number, value_type: int, default: 50, required: false }
+      - { label: "Hide this section (removes it from the site and the menu)", name: draft, widget: boolean, default: false }
+      - { label: "Menu", name: menu, widget: hidden, default: main }
+      - { label: "SEO description (optional)", name: description, widget: text, required: false,
+          hint: "Used for search engines / social previews. Not shown on the page." }
+      - { label: "SEO keywords (optional)", name: keywords, widget: list, required: false }
+      - { label: "Body", name: body, widget: markdown,
+          hint: "The page content. For the About page this is also the homepage text." }
