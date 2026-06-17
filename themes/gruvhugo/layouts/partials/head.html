@@ -42,7 +42,9 @@
     <meta name="author" content='{{ .Site.Params.main.name }}'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{hugo.Generator}}
-    {{ $style := resources.Get "/sass/main.scss" | toCSS | minify | fingerprint }}
+    {{/* Stable (non-fingerprinted) path so the CMS preview iframe at /admin/ can
+         reference the same compiled stylesheet — see static/admin/config-extra.js. */}}
+    {{ $style := resources.Get "/sass/main.scss" | toCSS | minify }}
     <link rel="stylesheet" href="{{ $style.Permalink }}" type="text/css" media="screen">
 
     {{ range .Site.Params.style.custom_css -}}

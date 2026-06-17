@@ -70,16 +70,16 @@ collections:
     extension: md
     format: yaml-frontmatter
     editor:
-      preview: false
+      preview: true
     sortable_fields: ['weight', 'title']
-    summary: '{{fields.title}} — {{fields.draft | ternary("Hidden","Visible")}}'
+    summary: "{{fields.title}} — {{fields.draft | ternary('Hidden','Visible')}}"
     fields:
       - { label: "Title (also the navigation label)", name: title, widget: string }
       - { label: "Menu order (lower numbers appear first)", name: weight, widget: number, value_type: int, default: 50, required: false }
       - { label: "Hide this section (removes it from the site and the menu)", name: draft, widget: boolean, default: false }
       - { label: "Menu", name: menu, widget: hidden, default: main }
+      - { label: "Body", name: body, widget: markdown,
+          hint: "The page content. For the About page this is also the homepage text." }
       - { label: "SEO description (optional)", name: description, widget: text, required: false,
           hint: "Used for search engines / social previews. Not shown on the page." }
       - { label: "SEO keywords (optional)", name: keywords, widget: list, required: false }
-      - { label: "Body", name: body, widget: markdown,
-          hint: "The page content. For the About page this is also the homepage text." }
