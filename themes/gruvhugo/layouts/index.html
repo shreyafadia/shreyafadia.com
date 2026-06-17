@@ -1,17 +1,20 @@
-{{define "main"}}
-<!--
+{{ define "main" }}
+{{- /* Serve the About content at the root URL (no redirect). The About page is
+       still managed in the CMS "Sections" list as content/about.md; here we render
+       its content so the most-linked URL (/) carries real content. /about/ is
+       301-redirected to / at the web-server level. */ -}}
+{{ with .Site.GetPage "/about" }}
+<section class="intro">
+  <div>
     <div class="intro" style="align-items: center">
-      {{if .Site.Data.homepage.enabled }}
-      <img class="image" src='{{ .Site.Data.homepage.img | absURL }}'
-	   title="{{	.Site.Data.homepage.img_title }}" width="200px"
-	   alt="Portrait of Shreya Fadia"/>
-      <ul>
-        <li class="intro-quote">{{ .Site.Data.homepage.quote }}</li>
-      </ul>
-      {{end}}
-      <p>{{ .Site.Data.homepage.description | markdownify }}</p>
+      {{ if site.Data.site.show_portrait }}
+      <img class="image" src='{{ site.Data.site.img | absURL }}'
+           title="{{ site.Data.site.img_title }}" width="200px"
+           alt="Portrait of Shreya Fadia"/>
+      {{ end }}
     </div>
--->
-    <meta http-equiv="refresh" content="0; url=/about/" />
-{{end}}
-
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}
+{{ end }}

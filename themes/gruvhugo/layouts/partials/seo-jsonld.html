@@ -1,0 +1,32 @@
+{{- /* Structured data (schema.org). Person + WebSite on the home page only.
+       sameAs is built from the social links in data/site.yml. Built with dict +
+       jsonify so values are safely escaped. */ -}}
+{{- $site := .Site.Data.site -}}
+{{- $name := or $site.title .Site.Params.main.name "Shreya Fadia" -}}
+{{- $desc := or $site.description .Site.Params.main.description -}}
+{{- $img  := (or $site.img .Site.Params.main.img) | absURL -}}
+{{- if .IsHome -}}
+{{- $sameAs := slice -}}
+{{- range $site.social -}}{{ with .url }}{{ $sameAs = $sameAs | append . }}{{ end }}{{- end -}}
+<script type="application/ld+json">
+{{ dict
+  "@context" "https://schema.org"
+  "@type" "Person"
+  "name" $name
+  "url" .Site.BaseURL
+  "image" $img
+  "description" ($desc | plainify)
+  "jobTitle" "Writer and Editor"
+  "address" (dict "@type" "PostalAddress" "addressRegion" "North Carolina" "addressCountry" "US")
+  "sameAs" $sameAs
+  | jsonify (dict "indent" "  ") | safeJS }}
+</script>
+<script type="application/ld+json">
+{{ dict
+  "@context" "https://schema.org"
+  "@type" "WebSite"
+  "name" .Site.Title
+  "url" .Site.BaseURL
+  | jsonify (dict "indent" "  ") | safeJS }}
+</script>
+{{- end -}}
