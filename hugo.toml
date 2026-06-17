@@ -2,6 +2,7 @@ baseURL = 'https://shreyafadia.com'
 languageCode = 'en-us'
 title = 'Shreya Fadia'
 theme = 'gruvhugo'
+enableRobotsTXT = true   # render layouts/robots.txt (single source of truth)
 [pagination]
   pagerSize = 10  # posts per page
 
