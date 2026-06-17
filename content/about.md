@@ -1,6 +1,6 @@
 ---
 title: About
-menus: main
+menu: main
 description: Biography of Shreya Fadia, writer and editor
 keywords:
   - Shreya Fadia

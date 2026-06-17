@@ -3,13 +3,13 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="canonical" href="{{ .Permalink }}">
     {{ if .IsHome}}
-    <title>{{.Site.Title}}</title>
-    <meta name="description" content="{{ .Site.Params.main.description  }}">
-    <meta property="og:title" content="{{ .Site.Title }}" />
+    <title>{{ .Site.Data.site.title | default .Site.Title }}</title>
+    <meta name="description" content="{{ .Site.Data.site.description | default .Site.Params.main.description }}">
+    <meta property="og:title" content="{{ .Site.Data.site.title | default .Site.Title }}" />
     <meta property="og:description"
-          content="{{.Site.Params.main.description | plainify }}" />
-    <meta property="og:image" content="{{ .Site.Params.main.img | absURL }}" />
-    <meta name="keywords" content="{{ $.Site.Params.main.Keywords }}" />
+          content="{{ .Site.Data.site.description | default .Site.Params.main.description | plainify }}" />
+    <meta property="og:image" content="{{ .Site.Data.site.img | default .Site.Params.main.img | absURL }}" />
+    <meta name="keywords" content="{{ .Site.Params.main.keywords }}" />
     {{else}}
     <title>{{.Title}} | {{.Site.Title}}</title>
     <meta name="description" content="{{.Title}}">
