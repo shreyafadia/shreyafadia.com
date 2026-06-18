@@ -1,6 +1,11 @@
 <div class="nav">
-        {{- $currentPage := . -}}
+        {{- /* The homepage renders the About page's content, so its nav item links
+               to / directly instead of /about/ (which 301-redirects to /). Detected
+               by page identity so about.md's front matter stays CMS-friendly. */ -}}
+        {{- $aboutPage := .Site.GetPage "/about" -}}
         {{ range .Site.Menus.main -}}
-            <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
+            {{- $url := .URL -}}
+            {{- with .Page }}{{ if and $aboutPage .File (eq .File.Path $aboutPage.File.Path) }}{{ $url = "/" }}{{ end }}{{ end -}}
+            <a href="{{ $url | absLangURL }}">{{ .Name }}</a>
         {{- end }}
 </div>
