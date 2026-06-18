@@ -3,6 +3,9 @@ languageCode = 'en-us'
 title = 'Shreya Fadia'
 theme = 'gruvhugo'
 enableRobotsTXT = true   # render layouts/robots.txt (single source of truth)
+# No tags/categories are used, so suppress the empty taxonomy/term list pages
+# (otherwise /tags/ and /categories/ show up as thin pages in the sitemap).
+disableKinds = ['taxonomy', 'term']
 [pagination]
   pagerSize = 10  # posts per page
 
