@@ -54,10 +54,12 @@
     <meta name="author" content='{{ .Site.Params.main.name }}'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{hugo.Generator}}
-    {{/* Stable (non-fingerprinted) path so the CMS preview iframe at /admin/ can
-         reference the same compiled stylesheet — see static/admin/config-extra.js. */}}
+    {{/* Stable filename /sass/main.min.css (so the CMS preview iframe can reference
+         it — see static/admin/config-extra.js) plus a content-hash query string for
+         cache-busting: the URL changes only when the compiled CSS changes. */}}
     {{ $style := resources.Get "/sass/main.scss" | toCSS | minify }}
-    <link rel="stylesheet" href="{{ $style.Permalink }}" type="text/css" media="screen">
+    {{ $v := substr (crypto.SHA256 $style.Content) 0 12 }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}?v={{ $v }}" type="text/css" media="screen">
 
     {{ range .Site.Params.style.custom_css -}}
     <link rel="stylesheet" href="{{ . | absURL }}">
